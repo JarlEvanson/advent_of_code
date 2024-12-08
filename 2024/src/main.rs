@@ -5,7 +5,7 @@ use utils::unimplemented;
 pub mod day_01;
 
 pub const SOLUTIONS: [fn(&str) -> (usize, usize); 25] = [
-    unimplemented,
+    day_01::solve,
     unimplemented,
     unimplemented,
     unimplemented,
