@@ -1,0 +1,11 @@
+# Ignore Rust build files
+/target
+/*/target
+/*/*/target
+/*/*/*/target
+
+# Ignore input directory
+/inputs
+
+# Ignore cookie file
+cookie.txt
