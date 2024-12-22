@@ -1,4 +1,5 @@
 pub mod cli;
+pub mod direction;
 pub mod grid;
 
 #[derive(Clone, Debug, Hash, PartialEq, Eq, PartialOrd, Ord)]
