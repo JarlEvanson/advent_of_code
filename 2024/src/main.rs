@@ -16,6 +16,7 @@ pub mod day_09;
 pub mod day_10;
 pub mod day_11;
 pub mod day_17;
+pub mod day_18;
 
 pub const SOLUTIONS: [Option<fn(&str) -> Solution>; 25] = [
     Some(day_01::solve),
@@ -35,7 +36,7 @@ pub const SOLUTIONS: [Option<fn(&str) -> Solution>; 25] = [
     None,
     None,
     Some(day_17::solve),
-    None,
+    Some(day_18::solve),
     None,
     None,
     None,
