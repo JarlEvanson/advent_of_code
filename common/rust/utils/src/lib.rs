@@ -1,4 +1,5 @@
 pub mod cli;
+pub mod direction;
 pub mod grid;
 pub mod hash;
 pub mod rand;
