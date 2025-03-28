@@ -2,6 +2,7 @@ pub mod cli;
 pub mod direction;
 pub mod grid;
 pub mod hash;
+pub mod math;
 pub mod rand;
 
 #[derive(Clone, Debug, Hash, PartialEq, Eq, PartialOrd, Ord)]
