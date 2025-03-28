@@ -4,6 +4,7 @@ pub mod grid;
 pub mod hash;
 pub mod math;
 pub mod rand;
+pub mod unionfind;
 
 #[derive(Clone, Debug, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub enum Solution {
