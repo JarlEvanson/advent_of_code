@@ -1,3 +1,4 @@
+#![feature(iter_array_chunks)]
 #![feature(iter_map_windows)]
 
 use std::process::ExitCode;
@@ -16,6 +17,7 @@ mod day_09;
 mod day_10;
 mod day_11;
 mod day_12;
+mod day_13;
 
 pub const SOLUTIONS: [Option<fn(&str) -> Solution>; 25] = [
     Some(day_01::solve),
@@ -30,7 +32,7 @@ pub const SOLUTIONS: [Option<fn(&str) -> Solution>; 25] = [
     Some(day_10::solve),
     Some(day_11::solve),
     Some(day_12::solve),
-    None,
+    Some(day_13::solve),
     None,
     None,
     None,
