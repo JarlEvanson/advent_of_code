@@ -1,6 +1,7 @@
 pub mod cli;
 pub mod grid;
 pub mod hash;
+pub mod rand;
 
 #[derive(Clone, Debug, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub enum Solution {
