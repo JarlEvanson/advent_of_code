@@ -8,8 +8,8 @@ use std::{
 
 use crate::Solution;
 
-pub fn run(solutions: [Option<fn(&str) -> Solution>; 25]) -> ExitCode {
-    let (input_folder, days) = match get_action() {
+pub fn run<const N: usize>(solutions: [Option<fn(&str) -> Solution>; N]) -> ExitCode {
+    let (input_folder, days) = match get_action::<N>() {
         Ok((input_folder, days)) => (input_folder, days),
         Err(error) => {
             print!("{error}");
@@ -45,7 +45,7 @@ pub fn run(solutions: [Option<fn(&str) -> Solution>; 25]) -> ExitCode {
     ExitCode::SUCCESS
 }
 
-pub fn get_action() -> Result<(PathBuf, Vec<u8>), GetActionError> {
+pub fn get_action<const N: usize>() -> Result<(PathBuf, Vec<u8>), GetActionError> {
     let mut args = args().skip(1);
 
     let Some(folder) = args.next().map(PathBuf::from) else {
@@ -54,7 +54,7 @@ pub fn get_action() -> Result<(PathBuf, Vec<u8>), GetActionError> {
 
     let mut days = Vec::new();
     let Some(arg) = args.next() else {
-        return Ok((folder, Vec::from_iter(1..=25)));
+        return Ok((folder, Vec::from_iter(1..=N as u8)));
     };
 
     for day in arg.split(',') {
