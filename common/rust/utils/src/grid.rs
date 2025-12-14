@@ -62,7 +62,7 @@ impl<T> Grid<T> {
         Some(&mut self.data[column as usize + row as usize * self.width])
     }
 
-    pub fn column(&self, column: usize) -> Option<Column<T>> {
+    pub fn column<'grid>(&'grid self, column: usize) -> Option<Column<'grid, T>> {
         if column >= self.width() {
             return None;
         }
@@ -70,14 +70,14 @@ impl<T> Grid<T> {
         Some(Column { grid: self, column })
     }
 
-    pub fn columns(&self) -> ColumnsIter<T> {
+    pub fn columns<'grid>(&'grid self) -> ColumnsIter<'grid, T> {
         ColumnsIter {
             grid: self,
             column: 0,
         }
     }
 
-    pub fn row(&self, row: usize) -> Option<Row<T>> {
+    pub fn row<'grid>(&'grid self, row: usize) -> Option<Row<'grid, T>> {
         if row >= self.height() {
             return None;
         }
@@ -85,11 +85,11 @@ impl<T> Grid<T> {
         Some(Row { grid: self, row })
     }
 
-    pub fn rows(&self) -> RowsIter<T> {
+    pub fn rows<'grid>(&'grid self) -> RowsIter<'grid, T> {
         RowsIter { grid: self, row: 0 }
     }
 
-    pub fn iter(&self) -> GridIter<T> {
+    pub fn iter<'grid>(&'grid self) -> GridIter<'grid, T> {
         GridIter {
             grid: self,
             column: 0,
