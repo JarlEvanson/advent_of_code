@@ -7,13 +7,15 @@ mod day_02;
 mod day_03;
 mod day_04;
 mod day_05;
+mod day_06;
 
-pub const SOLUTIONS: [Option<fn(&str) -> Solution>; 5] = [
+pub const SOLUTIONS: [Option<fn(&str) -> Solution>; 6] = [
     Some(day_01::solve),
     Some(day_02::solve),
     Some(day_03::solve),
     Some(day_04::solve),
     Some(day_05::solve),
+    Some(day_06::solve),
 ];
 
 fn main() -> ExitCode {
