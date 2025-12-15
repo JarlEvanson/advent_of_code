@@ -1,3 +1,5 @@
+use crate::direction::PrincipalDirection;
+
 #[derive(Clone, Debug, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Grid<T> {
     data: Box<[T]>,
@@ -68,6 +70,48 @@ impl<T> Grid<T> {
         }
 
         Some(Column { grid: self, column })
+    }
+
+    pub fn get_dir(
+        &self,
+        x: usize,
+        y: usize,
+        direction: PrincipalDirection,
+        offset: usize,
+    ) -> Option<&T> {
+        let (x, y) = self.calculate_offset(x, y, direction, offset)?;
+        self.get(x, y)
+    }
+
+    pub fn get_dir_mut(
+        &mut self,
+        x: usize,
+        y: usize,
+        direction: PrincipalDirection,
+        offset: usize,
+    ) -> Option<&mut T> {
+        let (x, y) = self.calculate_offset(x, y, direction, offset)?;
+        self.get_mut(x, y)
+    }
+
+    fn calculate_offset(
+        &self,
+        x: usize,
+        y: usize,
+        direction: PrincipalDirection,
+        offset: usize,
+    ) -> Option<(usize, usize)> {
+        let (x_offset, y_offset) = direction.offset();
+        let x_offset = x_offset.checked_mul(offset as isize)?;
+        let y_offset = y_offset.checked_mul(offset as isize)?;
+
+        let x = x.checked_add_signed(x_offset)?;
+        let y = y.checked_add_signed(y_offset)?;
+        if x >= self.width || y >= self.height {
+            return None;
+        }
+
+        Some((x, y))
     }
 
     pub fn columns<'grid>(&'grid self) -> ColumnsIter<'grid, T> {

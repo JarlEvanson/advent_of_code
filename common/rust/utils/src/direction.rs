@@ -63,6 +63,17 @@ impl PrincipalDirection {
     }
 }
 
+impl From<Direction> for PrincipalDirection {
+    fn from(value: Direction) -> Self {
+        match value {
+            Direction::North => PrincipalDirection::North,
+            Direction::East => PrincipalDirection::East,
+            Direction::South => PrincipalDirection::South,
+            Direction::West => PrincipalDirection::West,
+        }
+    }
+}
+
 #[derive(Clone, Copy, Debug, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub enum Direction {
     North,

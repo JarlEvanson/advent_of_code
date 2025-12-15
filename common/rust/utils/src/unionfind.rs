@@ -1,10 +1,8 @@
-
 #[derive(Clone, Debug, Hash, PartialEq, Eq)]
 pub struct UnionFind {
     parents: Box<[usize]>,
     sizes: Box<[usize]>,
 }
-
 
 impl UnionFind {
     pub fn new(node_count: usize) -> Self {
